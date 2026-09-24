@@ -1,26 +1,29 @@
-name: Build LaTeX
+@'
+name: Build LaTeX business card
 
-on: 
-  push: 
-    tags: 
-      -'*'
-  
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-     - name: Checkout
-       uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-     - name: Compile LaTeX
-       uses: xu-cheng/latex-action@v3
-       with: 
-         root_file: card.tex
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: card.tex
+          latexmk_use_xelatex: true
 
-     - name: Release PDF
-       uses: softprops/action-gh-release@v2
-       with: 
-         files: card.pdf
-
-        
+      - name: Release PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          files: card.pdf
+'@ | Set-Content -Path .github\workflows\latex.yml -Encoding UTF8

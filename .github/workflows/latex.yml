@@ -1,5 +1,4 @@
-@'
-name: Build LaTeX business card
+﻿name: Build LaTeX business card
 
 on:
   push:
@@ -26,4 +25,3 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: card.pdf
-'@ | Set-Content -Path .github\workflows\latex.yml -Encoding UTF8
